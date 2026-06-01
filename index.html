@@ -2,27 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shakawat Huzur | Modern Exam and Admission Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Shakawat Huzur | EduLearn Portal</title>
     <style>
-        /* ==================== CSS STYLES ==================== */
+        /* ==================== GLOBAL CSS STYLES ==================== */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --glass: rgba(255, 255, 255, 0.12);
+            --border: rgba(255, 255, 255, 0.25);
+            --text-soft: rgba(255,255,255,0.8);
+            --shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            /* Animated Unique Gradient Background */
-            background: linear-gradient(-45deg, #12c2e9, #c471ed, #f64f59, #4b6cb7);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            min-height: 100vh;
-            color: #ffffff;
-            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea, #764ba2, #ff758c);
+            background-size: 300% 300%;
+            animation: gradientBG 12s ease infinite;
+            color: #fff;
         }
 
         @keyframes gradientBG {
@@ -31,412 +40,518 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Glassmorphism Navigation */
-        nav {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-            position: sticky;
-            top: 20px;
-            z-index: 1000;
-            max-width: 900px;
-            margin: 20px auto;
-            border-radius: 50px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-decoration: none;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #ffffff;
-            margin-left: 10px;
-            padding: 8px 20px;
-            font-weight: 600;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Main Layout */
-        .container {
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            animation: fadeInDown 0.8s ease;
-        }
-
-        .subtitle {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 50px;
-            font-size: 1.2rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            animation: fadeIn 1s ease;
-        }
-
-        /* Glassmorphism Cards */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            justify-content: center;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .btn-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 35px 20px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 1.3rem;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .btn-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        /* Back Button */
-        .back-btn {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: 0.3s;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .back-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateX(-5px);
-        }
-        
-        .header-section {
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        .back-wrapper {
-            position: absolute;
-            left: 0;
-            top: 10px;
-        }
-
-        /* Pages Wrapper */
+        /* ================= COMMON ================= */
         .page {
             display: none;
             animation: fadeIn 0.5s ease;
+            text-align: center;
+        }
+        .page.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px);}
+            to { opacity: 1; transform: translateY(0);}
         }
 
-        .page.active {
-            display: block;
+        .logo {
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: #fff;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            nav { 
-                flex-direction: column; 
-                gap: 15px; 
-                border-radius: 20px;
-                padding: 1rem;
-                margin: 15px;
+        h1 {
+            margin-bottom: 8px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        .subtitle {
+            color: var(--text-soft);
+        }
+
+        /* ================= CARD IMPROVEMENT ================= */
+        .home-banner {
+            background: var(--glass);
+            border-radius: 20px;
+            padding: 35px 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: var(--shadow);
+        }
+
+        /* ================= BUTTON CARD ================= */
+        .btn-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            transition: all 0.25s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* subtle glow effect */
+        .btn-card::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+            top: 0;
+            left: -120%;
+            transition: 0.5s;
+        }
+
+        .btn-card:hover::before { left: 120%; }
+        .btn-card:hover { transform: translateY(-5px) scale(1.02); }
+
+        /* Missing logic elements for layout */
+        .step-container { display: none; }
+        .header-section { margin-bottom: 25px; text-align: left; }
+        
+        .back-btn {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+        .back-btn:active { transform: scale(0.95); }
+
+        /* ================= MOBILE VIEW (Default) ================= */
+        body {
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .desktop-nav { display: none; }
+
+        .mobile-top-bar {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+        }
+        .mobile-top-bar .logo { font-size: 1.2rem; }
+
+        .main-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 80px 20px 90px;
+            scrollbar-width: none;
+        }
+        .main-area::-webkit-scrollbar { display: none; }
+
+        .bottom-nav {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-top: 1px solid var(--border);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 15px 0;
+            border-radius: 25px 25px 0 0;
+            z-index: 1000;
+        }
+
+        .bottom-nav a {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .bottom-nav a.active {
+            color: #fff;
+            transform: scale(1.1);
+        }
+        .bottom-nav a .icon { font-size: 1.3rem; }
+
+        h1 { font-size: 1.8rem; }
+
+        .step-container.active-step {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn-card {
+            padding: 18px;
+            border-radius: 14px;
+            font-size: 1.05rem;
+            justify-content: space-between;
+        }
+        .btn-card::after { content: '→'; font-size: 1.2rem; opacity: 0.7; }
+        .btn-card:active { transform: scale(0.95); }
+        
+        .home-btn { justify-content: center; gap: 10px; padding: 25px 20px; font-size: 1.2rem; }
+        .home-btn::after { display: none; }
+
+        /* ================= DESKTOP VIEW ================= */
+        @media (min-width: 768px) {
+            body {
+                overflow-y: auto;
+                display: block;
+                height: auto;
+                min-height: 100vh;
             }
-            .nav-links {
+
+            .mobile-top-bar,
+            .bottom-nav {
+                display: none;
+            }
+
+            .desktop-nav {
                 display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
+                background: var(--glass);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid var(--border);
+                padding: 1rem 2rem;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 900px;
+                margin: 20px auto;
+                border-radius: 50px;
+                box-shadow: var(--shadow);
+                position: sticky;
+                top: 20px;
+                z-index: 1000;
             }
-            .nav-links a { margin: 0; }
-            .back-wrapper { position: static; margin-bottom: 20px; text-align: left; }
-        }
 
-        /* Animations */
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+            .desktop-nav .logo { font-size: 1.5rem; }
+
+            .nav-links a {
+                color: #fff;
+                padding: 8px 20px;
+                border-radius: 30px;
+                transition: 0.3s;
+                text-decoration: none;
+                font-weight: 600;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+
+            .nav-links a:hover,
+            .nav-links a.active {
+                background: rgba(255,255,255,0.2);
+            }
+
+            .main-area {
+                max-width: 1000px;
+                margin: 60px auto;
+                padding: 0 20px;
+                overflow: visible;
+            }
+
+            h1 { font-size: 3rem; }
+            .subtitle { font-size: 1.2rem; margin-bottom: 50px; }
+            .header-section { text-align: center; position: relative; margin-bottom: 40px; }
+
+            .step-container.active-step {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 25px;
+                justify-content: center;
+            }
+
+            .btn-card {
+                padding: 30px;
+                font-size: 1.2rem;
+                justify-content: center;
+                flex-direction: column;
+                border-radius: 20px;
+            }
+
+            .btn-card::after {
+                display: none;
+            }
+
+            .back-btn {
+                position: absolute;
+                left: 0;
+                top: 10px;
+                padding: 10px 25px;
+                border-radius: 30px;
+                font-size: 1rem;
+            }
+            .back-btn:hover { background: rgba(255, 255, 255, 0.3); transform: translateX(-5px); }
+        }
     </style>
 </head>
 <body>
 
-    <nav>
+    <nav class="desktop-nav">
         <a href="#" onclick="showPage('home')" class="logo">EduLearn</a>
         <div class="nav-links">
-            <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
-            <a onclick="showPage('admission')" id="nav-admission">Admission</a>
-            <a onclick="showPage('exam')" id="nav-exam">Exam</a>
+            <a onclick="showPage('home')" class="nav-btn nav-home active">Home</a>
+            <a onclick="showPage('admission')" class="nav-btn nav-admission">Admission</a>
+            <a onclick="showPage('exam')" class="nav-btn nav-exam">Exam</a>
         </div>
     </nav>
 
-    <div id="home" class="page container active">
-        <h1>Welcome to EduLearn</h1>
-        <p class="subtitle">Select your portal to continue</p>
+    <div class="mobile-top-bar">
+        <span class="logo">EduLearn App</span>
+    </div>
+
+    <div class="main-area">
         
-        <div class="card-grid">
-            <button class="btn-card" onclick="showPage('admission')">🎓 Admission Portal</button>
-            <button class="btn-card" onclick="showPage('exam')">📝 Exam Portal</button>
+        <div id="home" class="page active">
+            <div class="home-banner">
+                <h1>Welcome</h1>
+                <p class="subtitle" style="margin-bottom: 0;">Shakawat Huzur's Portal</p>
+            </div>
+            
+            <div class="step-container active-step">
+                <button class="btn-card home-btn" onclick="showPage('admission')">🎓 Admission Portal</button>
+                <button class="btn-card home-btn" onclick="showPage('exam')">📝 Exam Portal</button>
+            </div>
         </div>
-    </div>
 
-    <div id="admission" class="page container">
-        <div class="header-section">
-            <div class="back-wrapper">
+        <div id="admission" class="page">
+            <div class="header-section">
                 <button class="back-btn" onclick="goBackAdmission()">&#8592; Back</button>
+                <h1 id="admission-title">Admission Form</h1>
+                <p class="subtitle" id="admission-subtitle">Select class to apply</p>
             </div>
-            <h1 id="admission-title">Admission Form</h1>
-            <p class="subtitle" id="admission-subtitle">Select your class to apply</p>
+
+            <div class="step-container active-step" id="admission-step-1">
+                <button class="btn-card" onclick="selectAdmissionClass(6)">Class 6</button>
+                <button class="btn-card" onclick="selectAdmissionClass(7)">Class 7</button>
+                <button class="btn-card" onclick="selectAdmissionClass(8)">Class 8</button>
+                <button class="btn-card" onclick="selectAdmissionClass(9)">Class 9</button>
+                <button class="btn-card" onclick="selectAdmissionClass(10)">Class 10</button>
+            </div>
+
+            <div class="step-container" id="admission-step-2"></div>
         </div>
 
-        <div class="card-grid" id="admission-step-1">
-            <button class="btn-card" onclick="selectAdmissionClass(6)">Class 6</button>
-            <button class="btn-card" onclick="selectAdmissionClass(7)">Class 7</button>
-            <button class="btn-card" onclick="selectAdmissionClass(8)">Class 8</button>
-            <button class="btn-card" onclick="selectAdmissionClass(9)">Class 9</button>
-            <button class="btn-card" onclick="selectAdmissionClass(10)">Class 10</button>
-        </div>
-
-        <div class="card-grid" id="admission-step-2" style="display: none;"></div>
-    </div>
-
-    <div id="exam" class="page container">
-        <div class="header-section">
-            <div class="back-wrapper">
+        <div id="exam" class="page">
+            <div class="header-section">
                 <button class="back-btn" onclick="goBackExam()">&#8592; Back</button>
+                <h1 id="exam-title">Take Exam</h1>
+                <p class="subtitle" id="exam-subtitle">Select your Class</p>
             </div>
-            <h1 id="exam-title">Take an Exam</h1>
-            <p class="subtitle" id="exam-subtitle">Select your Class</p>
+
+            <div class="step-container active-step" id="exam-step-1">
+                <button class="btn-card" onclick="selectExamClass(6)">Class 6</button>
+                <button class="btn-card" onclick="selectExamClass(7)">Class 7</button>
+                <button class="btn-card" onclick="selectExamClass(8)">Class 8</button>
+                <button class="btn-card" onclick="selectExamClass(9)">Class 9</button>
+                <button class="btn-card" onclick="selectExamClass(10)">Class 10</button>
+            </div>
+
+            <div class="step-container" id="exam-step-2"></div>
+            <div class="step-container" id="exam-step-3"></div>
         </div>
 
-        <div class="card-grid" id="exam-step-1">
-            <button class="btn-card" onclick="selectExamClass(6)">Class 6</button>
-            <button class="btn-card" onclick="selectExamClass(7)">Class 7</button>
-            <button class="btn-card" onclick="selectExamClass(8)">Class 8</button>
-            <button class="btn-card" onclick="selectExamClass(9)">Class 9</button>
-            <button class="btn-card" onclick="selectExamClass(10)">Class 10</button>
-        </div>
-
-        <div class="card-grid" id="exam-step-2" style="display: none;"></div>
-
-        <div class="card-grid" id="exam-step-3" style="display: none;"></div>
     </div>
 
-    <script>
-        /* ==================== JAVASCRIPT ==================== */
+    <nav class="bottom-nav">
+        <a onclick="showPage('home')" class="nav-btn nav-home active">
+            <span class="icon">🏠</span> Home
+        </a>
+        <a onclick="showPage('admission')" class="nav-btn nav-admission">
+            <span class="icon">🎓</span> Admission
+        </a>
+        <a onclick="showPage('exam')" class="nav-btn nav-exam">
+            <span class="icon">📝</span> Exam
+        </a>
+    </nav>
 
-        // 1. NAVIGATION FUNCTION
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Update Nav Links
-            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            document.getElementById('nav-' + pageId).classList.add('active');
-            
-            // Reset Flows
-            if(pageId === 'exam') resetExamFlow();
-            if(pageId === 'admission') resetAdmissionFlow();
+
+<script>
+    /* ==================== JAVASCRIPT ==================== */
+
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        
+        document.querySelectorAll('.nav-btn').forEach(a => a.classList.remove('active'));
+        document.querySelectorAll('.nav-' + pageId).forEach(a => a.classList.add('active'));
+        
+        if(pageId === 'exam') resetExamFlow();
+        if(pageId === 'admission') resetAdmissionFlow();
+    }
+
+    // ==================== ADMISSION LOGIC ====================
+    const admissionData = {
+        6: [ { name: "Apply Now", link: "https://forms.gle/UdVhPJgp526hpR2Y7" } ],
+        7: [ { name: "Apply Now", link: "https://forms.gle/g5n3e3vrTCErFypFA" } ],
+        8: [ { name: "Apply Now", link: "https://forms.gle/NnuJx4E1Kzw8cysV9" } ],
+        9: [
+            { name: "Science Group", link: "https://forms.gle/MNTHNdPNNiVYNLbT7" },
+            { name: "Arts Group", link: "https://forms.gle/MNTHNdPNNiVYNLbT7" },
+            { name: "Commerce Group", link: "https://forms.gle/MNTHNdPNNiVYNLbT7" }
+        ],
+        10: [
+            { name: "Science Group", link: "https://forms.gle/1CFv16S8qzPTqg7s7" },
+            { name: "Arts Group", link: "https://forms.gle/1CFv16S8qzPTqg7s7" },
+            { name: "Commerce Group", link: "https://forms.gle/1CFv16S8qzPTqg7s7" }
+        ]
+    };
+
+    let currentAdmissionClass = null;
+
+    function selectAdmissionClass(classNum) {
+        currentAdmissionClass = classNum;
+        
+        document.getElementById('admission-step-1').classList.remove('active-step');
+        document.getElementById('admission-step-2').classList.add('active-step');
+        
+        document.getElementById('admission-title').innerText = "Class " + classNum;
+        document.getElementById('admission-subtitle').innerText = "Select Group/Option";
+        
+        const forms = admissionData[classNum];
+        const container = document.getElementById('admission-step-2');
+        container.innerHTML = '';
+        
+        forms.forEach(form => {
+            container.innerHTML += `<a href="${form.link}" class="btn-card" target="_blank">${form.name}</a>`;
+        });
+    }
+
+    function goBackAdmission() {
+        if(document.getElementById('admission-step-2').classList.contains('active-step')) {
+            resetAdmissionFlow();
+        } else {
+            showPage('home');
         }
+    }
 
-        // ==================== ADMISSION LOGIC ====================
-        // ADD YOUR GOOGLE FORM LINKS FOR ADMISSION HERE
-        const admissionData = {
-            6: [
-                { name: "Apply Now", link: "https://forms.gle/UdVhPJgp526hpR2Y7" }
-            ],
-            7: [
-                { name: "Apply Now", link: "https://forms.gle/g5n3e3vrTCErFypFA" }
-            ],
-            8: [
-                { name: "Apply Now", link: "https://forms.gle/NnuJx4E1Kzw8cysV9" }
-            ],
-            9: [
-                { name: "Science Group", link: "https://forms.gle/MNTHNdPNNiVYNLbT7" },
-                { name: "Arts Group", link: "https://forms.gle/MNTHNdPNNiVYNLbT7" },
-                { name: "Commerce Group", link: "https://forms.gle/MNTHNdPNNiVYNLbT7" }
-            ],
-            10: [
-                { name: "Science Group", link: "https://forms.gle/1CFv16S8qzPTqg7s7" },
-                { name: "Arts Group", link: "https://forms.gle/1CFv16S8qzPTqg7s7" },
-                { name: "Commerce Group", link: "https://forms.gle/1CFv16S8qzPTqg7s7" }
-            ]
-        };
+    function resetAdmissionFlow() {
+        document.getElementById('admission-step-1').classList.add('active-step');
+        document.getElementById('admission-step-2').classList.remove('active-step');
+        document.getElementById('admission-title').innerText = "Admission Form";
+        document.getElementById('admission-subtitle').innerText = "Select class to apply";
+    }
 
-        let currentAdmissionClass = null;
-
-        function selectAdmissionClass(classNum) {
-            currentAdmissionClass = classNum;
-            
-            document.getElementById('admission-step-1').style.display = 'none';
-            document.getElementById('admission-step-2').style.display = 'grid';
-            
-            document.getElementById('admission-title').innerText = "Class " + classNum + " Admission";
-            document.getElementById('admission-subtitle').innerText = "Select Option to Apply";
-            
-            const forms = admissionData[classNum];
-            const container = document.getElementById('admission-step-2');
-            container.innerHTML = '';
-            
-            forms.forEach(form => {
-                container.innerHTML += `<a href="${form.link}" class="btn-card" target="_blank">${form.name}</a>`;
-            });
+    // ==================== EXAM LOGIC ====================
+    const examData = {
+        6: {
+            Bangla: [{ name: "Class 6 Bangla - Mid", link: "https://forms.google.com/your-link" }],
+            English: [{ name: "Class 6 English - Mid", link: "https://forms.google.com/your-link" }],
+            Math: [{ name: "Class 6 Math - Final", link: "https://forms.google.com/your-link" }],
+            Science: [{ name: "Class 6 Science - Quiz", link: "https://forms.google.com/your-link" }]
+        },
+        7: {
+            Bangla: [{ name: "Class 7 Bangla - Mid", link: "https://forms.google.com/your-link" }],
+            English: [{ name: "Class 7 English - Mid", link: "https://forms.google.com/your-link" }],
+            Math: [{ name: "Class 7 Math - Final", link: "https://forms.google.com/your-link" }],
+            Science: [{ name: "Class 7 Science - Quiz", link: "https://forms.google.com/your-link" }]
+        },
+        8: {
+            Bangla: [{ name: "Class 8 Bangla - Mid", link: "https://forms.google.com/your-link" }],
+            English: [{ name: "Class 8 English - Mid", link: "https://forms.google.com/your-link" }],
+            Math: [{ name: "Class 8 Math - Final", link: "https://forms.google.com/your-link" }],
+            Science: [{ name: "Class 8 Science - Quiz", link: "https://forms.google.com/your-link" }]
+        },
+        9: {
+            Bangla: [{ name: "Class 9 Bangla - Mid", link: "https://forms.google.com/your-link" }],
+            English: [{ name: "Class 9 English - Mid", link: "https://forms.google.com/your-link" }],
+            Math: [{ name: "Class 9 Math - Final", link: "https://forms.google.com/your-link" }],
+            Science: [{ name: "Class 9 Science - Quiz", link: "https://forms.google.com/your-link" }]
+        },
+        10: {
+            Bangla: [{ name: "Class 10 Bangla - Mid", link: "https://forms.google.com/your-link" }],
+            English: [{ name: "Class 10 English - Mid", link: "https://forms.google.com/your-link" }],
+            Math: [{ name: "Class 10 Math - Final", link: "https://forms.google.com/your-link" }],
+            Science: [{ name: "Class 10 Science - Quiz", link: "https://forms.google.com/your-link" }]
         }
+    };
 
-        function goBackAdmission() {
-            if(document.getElementById('admission-step-2').style.display === 'grid') {
-                resetAdmissionFlow();
-            } else {
-                showPage('home');
-            }
-        }
+    let currentClass = null;
 
-        function resetAdmissionFlow() {
-            document.getElementById('admission-step-1').style.display = 'grid';
-            document.getElementById('admission-step-2').style.display = 'none';
-            document.getElementById('admission-title').innerText = "Admission Form";
-            document.getElementById('admission-subtitle').innerText = "Select your class to apply";
-        }
+    function selectExamClass(classNum) {
+        currentClass = classNum;
+        
+        document.getElementById('exam-step-1').classList.remove('active-step');
+        document.getElementById('exam-step-2').classList.add('active-step');
+        
+        document.getElementById('exam-title').innerText = "Class " + classNum;
+        document.getElementById('exam-subtitle').innerText = "Select Subject";
+        
+        const subjects = ['Bangla', 'English', 'Math', 'Science'];
+        const container = document.getElementById('exam-step-2');
+        container.innerHTML = '';
+        
+        subjects.forEach(sub => {
+            container.innerHTML += `<button class="btn-card" onclick="selectSubject('${sub}')">${sub}</button>`;
+        });
+    }
 
+    function selectSubject(subject) {
+        document.getElementById('exam-step-2').classList.remove('active-step');
+        document.getElementById('exam-step-3').classList.add('active-step');
+        
+        document.getElementById('exam-title').innerText = subject;
+        document.getElementById('exam-subtitle').innerText = "Select Exam to start";
+        
+        const exams = examData[currentClass][subject];
+        const container = document.getElementById('exam-step-3');
+        container.innerHTML = '';
+        
+        exams.forEach(exam => {
+            container.innerHTML += `<a href="${exam.link}" class="btn-card" target="_blank">${exam.name}</a>`;
+        });
+    }
 
-        // ==================== EXAM LOGIC ====================
-        // ADD YOUR GOOGLE FORM LINKS FOR EXAMS HERE
-        const examData = {
-            6: {
-                Bangla: [{ name: "Class 6 Bangla - Mid", link: "https://forms.google.com/your-link" }],
-                English: [{ name: "Class 6 English - Mid", link: "https://forms.google.com/your-link" }],
-                Math: [{ name: "Class 6 Math - Final", link: "https://forms.google.com/your-link" }],
-                Science: [{ name: "Class 6 Science - Quiz", link: "https://forms.google.com/your-link" }]
-            },
-            7: {
-                Bangla: [{ name: "Class 7 Bangla - Mid", link: "https://forms.google.com/your-link" }],
-                English: [{ name: "Class 7 English - Mid", link: "https://forms.google.com/your-link" }],
-                Math: [{ name: "Class 7 Math - Final", link: "https://forms.google.com/your-link" }],
-                Science: [{ name: "Class 7 Science - Quiz", link: "https://forms.google.com/your-link" }]
-            },
-            8: {
-                Bangla: [{ name: "Class 8 Bangla - Mid", link: "https://forms.google.com/your-link" }],
-                English: [{ name: "Class 8 English - Mid", link: "https://forms.google.com/your-link" }],
-                Math: [{ name: "Class 8 Math - Final", link: "https://forms.google.com/your-link" }],
-                Science: [{ name: "Class 8 Science - Quiz", link: "https://forms.google.com/your-link" }]
-            },
-            9: {
-                Bangla: [{ name: "Class 9 Bangla - Mid", link: "https://forms.google.com/your-link" }],
-                English: [{ name: "Class 9 English - Mid", link: "https://forms.google.com/your-link" }],
-                Math: [{ name: "Class 9 Math - Final", link: "https://forms.google.com/your-link" }],
-                Science: [{ name: "Class 9 Science - Quiz", link: "https://forms.google.com/your-link" }]
-            },
-            10: {
-                Bangla: [{ name: "Class 10 Bangla - Mid", link: "https://forms.google.com/your-link" }],
-                English: [{ name: "Class 10 English - Mid", link: "https://forms.google.com/your-link" }],
-                Math: [{ name: "Class 10 Math - Final", link: "https://forms.google.com/your-link" }],
-                Science: [{ name: "Class 10 Science - Quiz", link: "https://forms.google.com/your-link" }]
-            }
-        };
-
-        let currentClass = null;
-
-        function selectExamClass(classNum) {
-            currentClass = classNum;
-            
-            document.getElementById('exam-step-1').style.display = 'none';
-            document.getElementById('exam-step-2').style.display = 'grid';
-            
-            document.getElementById('exam-title').innerText = "Class " + classNum;
+    function goBackExam() {
+        if(document.getElementById('exam-step-3').classList.contains('active-step')) {
+            document.getElementById('exam-step-3').classList.remove('active-step');
+            document.getElementById('exam-step-2').classList.add('active-step');
+            document.getElementById('exam-title').innerText = "Class " + currentClass;
             document.getElementById('exam-subtitle').innerText = "Select Subject";
-            
-            const subjects = ['Bangla', 'English', 'Math', 'Science'];
-            const container = document.getElementById('exam-step-2');
-            container.innerHTML = '';
-            
-            subjects.forEach(sub => {
-                container.innerHTML += `<button class="btn-card" onclick="selectSubject('${sub}')">${sub}</button>`;
-            });
+        } else if(document.getElementById('exam-step-2').classList.contains('active-step')) {
+            resetExamFlow();
+        } else {
+            showPage('home');
         }
+    }
 
-        function selectSubject(subject) {
-            document.getElementById('exam-step-2').style.display = 'none';
-            document.getElementById('exam-step-3').style.display = 'grid';
-            
-            document.getElementById('exam-title').innerText = "Class " + currentClass + " " + subject;
-            document.getElementById('exam-subtitle').innerText = "Select Exam";
-            
-            const exams = examData[currentClass][subject];
-            const container = document.getElementById('exam-step-3');
-            container.innerHTML = '';
-            
-            exams.forEach(exam => {
-                container.innerHTML += `<a href="${exam.link}" class="btn-card" target="_blank">${exam.name}</a>`;
-            });
-        }
-
-        function goBackExam() {
-            if(document.getElementById('exam-step-3').style.display === 'grid') {
-                document.getElementById('exam-step-3').style.display = 'none';
-                document.getElementById('exam-step-2').style.display = 'grid';
-                document.getElementById('exam-title').innerText = "Class " + currentClass;
-                document.getElementById('exam-subtitle').innerText = "Select Subject";
-            } else if(document.getElementById('exam-step-2').style.display === 'grid') {
-                resetExamFlow();
-            } else {
-                showPage('home');
-            }
-        }
-
-        function resetExamFlow() {
-            document.getElementById('exam-step-1').style.display = 'grid';
-            document.getElementById('exam-step-2').style.display = 'none';
-            document.getElementById('exam-step-3').style.display = 'none';
-            document.getElementById('exam-title').innerText = "Take an Exam";
-            document.getElementById('exam-subtitle').innerText = "Select your Class";
-        }
-    </script>
+    function resetExamFlow() {
+        document.getElementById('exam-step-1').classList.add('active-step');
+        document.getElementById('exam-step-2').classList.remove('active-step');
+        document.getElementById('exam-step-3').classList.remove('active-step');
+        document.getElementById('exam-title').innerText = "Take Exam";
+        document.getElementById('exam-subtitle').innerText = "Select your Class";
+    }
+</script>
 </body>
 </html>
